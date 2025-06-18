@@ -1,40 +1,67 @@
 #include <stdio.h>
+#define tamanho 10
+#define tamanho_navio 3
+
 
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Siga os comentários para implementar cada parte do desafio.
 
 int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+   
+    int tabuleiro[tamanho][tamanho];
+    int i, j;
 
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+    for (i = 0; i < tamanho; i++){
+        for (j = 0;j < tamanho; j++){
+            tabuleiro [i][j] = 0;
+        }
+    }
 
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
 
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
+    int navio_horizontal[tamanho_navio];
+    int navio_vertical [tamanho_navio];
 
+    for(i = 0; i < tamanho_navio; i++){
+
+        navio_horizontal[i] = 3;
+        navio_vertical[i] = 3;
+    }
+
+    int linha_a = 2;
+    int coluna_a = 1;
+
+    int linha_b = 4;
+    int coluna_b = 5;
+
+    for(i = 0; i < tamanho_navio; i++){
+
+        tabuleiro[linha_a][coluna_a + i] = navio_horizontal[i];
+    }
+
+    for(i = 0; i < tamanho_navio; i++){
+
+        tabuleiro[linha_b][coluna_b + i] = navio_vertical[i];
+    }
+
+
+    printf("TABULEIRO NAVAL\n");
+
+    printf(" ");
+
+    for (j = 0; j < tamanho; j++){
+        printf("%d", j);
+    }
+
+    printf("\n");
+
+    for(i = 0; i < tamanho; i++){
+        printf("%d", i);
+        for(j = 0; j < tamanho; j++){
+            printf("%d", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
     return 0;
 }
